@@ -16,11 +16,11 @@ main {
 }
 
 img {
-    width: 120px;
+    width: 9rem;
 }
 
 h1 {
-    font-size: 25px;
+    font-size: 2rem;
 }
 
 .heading {
@@ -45,4 +45,9 @@ input {
 
 form button {
     margin-top: 2.5rem;
+    cursor: pointer;
+}
+
+form button:hover {
+    border: 2.5px solid #979797;
 }
