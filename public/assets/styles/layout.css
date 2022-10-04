@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+    letter-spacing: 0.8px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+a {
+    text-decoration: none;
+    color: #1d1f24;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    width: 5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+nav {
+    padding: 2rem;
+    border: 2.5px solid #979797;
+}
+
+main {
+    flex-grow: 1;
+    padding: 2rem;
+}
+
+h1,
+h2 {
+    font-weight: bold;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,41 @@
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    padding: 0.3rem;
+    background: transparent;
+    border: 1.5px solid #000;
+    margin-left: 0.5rem;
+}
+
+.table-section {
+    border: 2px solid #b7b7b7;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    font-size: 0.6rem;
+    text-align: left;
+    padding-bottom: 1rem;
+}
+
+td {
+    padding-top: 1rem;
+}
+
+.pagination {
+    padding: 1rem 0 1rem 0;
+}
