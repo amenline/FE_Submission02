@@ -13,6 +13,9 @@ body {
     background-color: #d8d8d8;
     font-family: 'Inter', Arial, sans-serif;
     color: #1d1f24;
-    padding: 1rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
+}
+
+.hide {
+    display: none;
 }

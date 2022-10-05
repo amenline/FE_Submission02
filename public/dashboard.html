@@ -7,67 +7,79 @@
         <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
         <script src="assets/scripts/commonScripts.js"></script>
         <link rel="stylesheet" href="assets/styles/baseStyles.css" />
+        <link rel="stylesheet" href="assets/styles/layout.css" />
+        <link rel="stylesheet" href="assets/styles/dashboard.css" />
         <title>Freddys - Dashboard</title>
     </head>
     <body>
-        <nav>
-            <img src="assets/images/logo.svg" alt="logo" />
-            <ul>
-                <li>Dashboard</li>
-                <li>Orders</li>
-                <li>Logout</li>
-            </ul>
-        </nav>
-        <main>
-            <h1>Dashboard</h1>
-            <section>
-                <div>
-                    Today
-                    <span>$1456 / 9 orders</span>
-                </div>
-                <div>
-                    Last Week
-                    <div>$34k / 120 orders</div>
-                </div>
-                <div>
-                    Last Month
-                    <div>$95k / 876 orders</div>
-                </div>
-            </section>
-            <section>
-                <h2>Revenue (Last 7 days)</h2>
-                <!-- <h2>Revenue (Last 12 months)</h2> -->
-                <div>Graph</div>
-            </section>
-            <section>
-                <h2>Bestsellers</h2>
-                <table>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th># Units Sold</th>
-                        <th>Revenue</th>
-                    </tr>
-                    <tr>
-                        <td>Item 1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Item 2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Item 3</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </section>
-        </main>
+        <div class="container">
+            <nav>
+                <img src="assets/images/logo.svg" alt="logo" class="logo" />
+                <ul>
+                    <li><a href="./dashboard.html">Dashboard</a></li>
+                    <li><a href="./orders.html">Orders</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+            <main>
+                <h1 class="heading">Dashboard</h1>
+                <section class="card-section">
+                    <div class="card">
+                        <div class="card-heading">Today</div>
+                        <div class="card-body">$1456 / 9 orders</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-heading">Last Week</div>
+                        <div class="card-body">$34K / 120 orders</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-heading">Last Month</div>
+                        <div class="card-body">$95K / 876 orders</div>
+                    </div>
+                </section>
+                <section class="graph-section">
+                    <div class="graph-section-head heading">
+                        <h2>Revenue (last 7 days)</h2>
+                        <!-- <h2>Revenue (Last 12 months)</h2> -->
+                        <label class="switch">
+                            <input type="checkbox" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <!-- <div>Graph</div> -->
+                </section>
+                <section>
+                    <h2 class="heading">Bestsellers</h2>
+                    <div class="table-section">
+                        <table>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th># Units Sold</th>
+                                <th>Revenue</th>
+                            </tr>
+                            <tr>
+                                <td>Item 1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Item 2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Item 3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
     </body>
 </html>
