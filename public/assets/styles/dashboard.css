@@ -46,7 +46,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #979797;
     -webkit-transition: 0.4s;
     transition: 0.4s;
 }
@@ -64,11 +64,11 @@ section {
 }
 
 input:checked + .slider {
-    background-color: #979797;
+    background-color: #f27503;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #6e6e6e;
+    box-shadow: 0 0 1px #f27503;
 }
 
 input:checked + .slider:before {
@@ -91,4 +91,9 @@ input:checked + .slider:before {
 
 .graph-section {
     width: fit-content;
+}
+
+.chart {
+    padding: 2rem;
+    border: 2px solid #b7b7b7;
 }
