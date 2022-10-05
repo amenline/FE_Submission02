@@ -13,15 +13,15 @@ body {
 main {
     border: 7px #979797 solid;
     padding: 1.5rem;
-    max-width: 400px;
+    max-width: 300px;
 }
 
 img {
-    width: 9rem;
+    width: 6rem;
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 
 .heading {
@@ -40,12 +40,12 @@ input {
     padding: 0.5rem;
     background: transparent;
     border: 2.5px solid #b9b9b9;
-    margin-bottom: 2rem;
-    font-size: 2rem;
+    margin-bottom: 1.7rem;
+    font-size: 1rem;
 }
 
 form button {
-    margin-top: 2.5rem;
+    margin-top: 1.4rem;
     cursor: pointer;
 }
 

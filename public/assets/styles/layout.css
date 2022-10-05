@@ -1,7 +1,6 @@
 .container {
     display: flex;
     min-height: 100vh;
-    letter-spacing: 0.8px;
 }
 
 ul {
