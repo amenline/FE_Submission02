@@ -17,25 +17,6 @@ input {
     margin-left: 0.5rem;
 }
 
-.table-section {
-    border: 2px solid #b7b7b7;
-    padding: 1rem 1.5rem 1.5rem 1.5rem;
-}
-
-table {
-    width: 100%;
-}
-
-th {
-    font-size: 0.6rem;
-    text-align: left;
-    padding-bottom: 1rem;
-}
-
-td {
-    padding-top: 1rem;
-}
-
 .pagination {
     padding: 1rem 0 1rem 0;
 }
@@ -46,4 +27,8 @@ td {
 
 .delivered {
     color: #74d410;
+}
+
+.mouse-pointer {
+    cursor: pointer;
 }
