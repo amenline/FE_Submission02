@@ -52,3 +52,12 @@ form button {
 form button:hover {
     border: 2.5px solid #979797;
 }
+
+.notification {
+    position: absolute;
+    top: 12px;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 10px;
+    background: #f27503;
+    color: #fff;
+}

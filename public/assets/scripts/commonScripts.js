@@ -1,9 +1,16 @@
 document.querySelector('body').onload = function () {
     const refresh_token = getCookie('refresh_token');
-    console.log('vlaueslulkdjaf', access_token);
-    if (refresh_token === null) {
-        window.location.replace('/public/');
-    } else if (access_token === null) {
-        refreshToken();
+    const access_token = getCookie('access_token');
+    if (refresh_token === '') {
+        window.location.replace('../public/index.html');
+    } else if (access_token === '') {
+        refreshToken(refresh_token);
     }
 };
+
+function logout() {
+    console.log('logout');
+    setCookie('access_token', '');
+    setCookie('refresh_token', '');
+    window.location.replace('../public/index.html');
+}

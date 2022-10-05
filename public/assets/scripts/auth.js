@@ -1,52 +1,42 @@
-// console.log(document.querySelector('body'));
-let access_token = null;
+document.querySelector('form').addEventListener("submit", login);
 
-function setCookie(cookie_name, cookie_value, duration = 30, period = 'days') {
-    const date = new Date();
-    if (period == 'days') {
-        date.setTime(date.getTime() + duration * 24 * 60 * 60 * 1000);
-    } else {
-        date.setTime(date.getTime() + 15 * 60 * 1000);
-    }
-    let expires = 'expires=' + date.toUTCString();
-    document.cookie =
-        cookie_name + '=' + cookie_value + ';' + expires + ';path=/';
-}
-
-function getCookie(cookie_name) {
-    let name = cookie_name + '=';
-    let cookie_array = document.cookie.split(';');
-    for (let i = 0; i < cookie_array.length; i++) {
-        let cookie = cookie_array[i];
-        while (cookie.charAt(0) == ' ') {
-            cookie = cookie.substring(1);
+document.querySelector('body').onload = function () {
+    const refresh_token = getCookie('refresh_token');
+    const access_token = getCookie('access_token');
+    if (refresh_token !== '') {
+        if (access_token === '') {
+            refreshToken(refresh_token);
         }
-        if (cookie.indexOf(name) == 0) {
-            return cookie.substring(name.length, cookie.length);
-        }
+
+        window.location.replace('../public/dashboard.html');
     }
-    return null;
+};
+
+function login(_event) {
+    _event.preventDefault();
+
+    const username = document.getElementsByName("username")[0].value.trim();
+    const password = document.getElementsByName("password")[0].value.trim();
+
+    const payload = {
+        username,
+        password
+    };
+
+    if (username !== '' && password !== '') (
+        fetchData(login_url, null, method = 'POST', payload).then(data => {
+            console.log(data.msg)
+            if (data.msg == 'Bad credentials') {
+                const notfication = document.querySelector('.notification');
+                notfication.classList.remove("hide");
+                setTimeout(function () {
+                    notfication.classList.add("hide");
+                }, 4000);
+            } else if (data.access_token) {
+                setCookie('access_token', data.access_token, 15, 'mins');
+                setCookie('refresh_token', data.refresh_token);
+                window.location.replace('../public/dashboard.html');
+            }
+        })
+    )
 }
-
-function refreshToken() {}
-
-async function fetchData(url, method, payload = null) {
-    try {
-        let response = await fetch(url);
-        return await response.json();
-    } catch (error) {
-        console.log('Error while fetching data', error);
-    }
-}
-
-// function checkCookie() {
-//     let user = getCookie('username');
-//     if (user != '') {
-//         alert('Welcome again ' + user);
-//     } else {
-//         user = prompt('Please enter your name:', '');
-//         if (user != '' && user != null) {
-//             setCookie('username', user, 365);
-//         }
-//     }
-// }
