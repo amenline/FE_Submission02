@@ -1,4 +1,4 @@
-document.querySelector('form').addEventListener("submit", login);
+document.querySelector('form').addEventListener('submit', login);
 
 document.querySelector('body').onload = function () {
     const refresh_token = getCookie('refresh_token');
@@ -15,28 +15,27 @@ document.querySelector('body').onload = function () {
 function login(_event) {
     _event.preventDefault();
 
-    const username = document.getElementsByName("username")[0].value.trim();
-    const password = document.getElementsByName("password")[0].value.trim();
+    const username = document.getElementsByName('username')[0].value.trim();
+    const password = document.getElementsByName('password')[0].value.trim();
 
     const payload = {
         username,
-        password
+        password,
     };
 
-    if (username !== '' && password !== '') (
-        fetchData(login_url, null, method = 'POST', payload).then(data => {
-            console.log(data.msg)
+    if (username !== '' && password !== '')
+        fetchData(login_url, null, (method = 'POST'), payload).then((data) => {
+            console.log(data.msg);
             if (data.msg == 'Bad credentials') {
                 const notfication = document.querySelector('.notification');
-                notfication.classList.remove("hide");
+                notfication.classList.remove('hide');
                 setTimeout(function () {
-                    notfication.classList.add("hide");
+                    notfication.classList.add('hide');
                 }, 4000);
             } else if (data.access_token) {
                 setCookie('access_token', data.access_token, 15, 'mins');
                 setCookie('refresh_token', data.refresh_token);
                 window.location.replace('../public/dashboard.html');
             }
-        })
-    )
+        });
 }

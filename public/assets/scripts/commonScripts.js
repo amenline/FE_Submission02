@@ -10,7 +10,7 @@ function logout() {
 }
 
 function authenticate() {
-    console.log('*********runing authenticate')
+    console.log('*********runing authenticate');
     const refresh_token = getCookie('refresh_token');
     const access_token = getCookie('access_token');
     if (refresh_token === '') {

@@ -26,9 +26,13 @@ input {
 }
 
 .delivered {
-    color: #74d410;
+    color: #5eb404;
 }
 
 .mouse-pointer {
     cursor: pointer;
+}
+
+.capitalize-first.m_title {
+    text-transform: capitalize;
 }
