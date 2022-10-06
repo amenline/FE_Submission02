@@ -93,9 +93,12 @@ input:checked + .slider:before {
     width: fit-content;
 }
 
+.chart-container {
+    width: 850px;
+    height: 400px;
+}
+
 .chart {
     padding: 2rem;
     border: 2px solid #b7b7b7;
-    width: 850px;
-    height: 400px;
 }

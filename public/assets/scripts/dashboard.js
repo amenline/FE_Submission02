@@ -18,9 +18,30 @@ fetchData(dashboard_data_url, getCookie('access_token')).then(response => {
         days_data.push(sales_over_time_week[day].orders)
     });
 
+    for (let i = 0; i < days.length; i++) {
+        console.log(days[i])
+        if (i === 0) {
+            days[i] = 'today'
+        } else if (i === 1) {
+            days[i] = 'yesterday'
+        } else {
+            days[i] = 'day ' + days[i]
+        }
+    }
+
     months.map(month => {
         months_data.push(sales_over_time_year[month].orders)
     });
+    for (let j = 0; j < months.length; j++) {
+        console.log(months[j])
+        if (j === 0) {
+            months[j] = 'this month'
+        } else if (j === 1) {
+            months[j] = 'last month'
+        } else {
+            months[j] = 'month ' + months[j]
+        }
+    }
 
     createChart(days_data, days);
     createChart(months_data, months, 'monthsChart');
