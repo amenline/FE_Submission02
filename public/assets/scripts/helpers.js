@@ -2,8 +2,8 @@
 const login_url = 'https://freddy.codesubmit.io/login';
 const dashboard_data_url = 'https://freddy.codesubmit.io/dashboard';
 const refresh_token_url = 'https://freddy.codesubmit.io/refresh';
-function searchTerm(search_term) {
-    return `https://freddy.codesubmit.io/orders?page=1&q=${search_term}`;
+function searchTerm(search_term, page = 1) {
+    return `https://freddy.codesubmit.io/orders?page=${page}&q=${search_term}`;
 }
 
 function setCookie(cookie_name, cookie_value, duration = 30, period = 'days') {
