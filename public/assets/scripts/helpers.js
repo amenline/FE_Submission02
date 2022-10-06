@@ -52,7 +52,7 @@ async function fetchData(url, token, method = 'GET', payload = null) {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token,
             }),
-            body: JSON.stringify(payload),
+            body: method === 'POST' ? JSON.stringify(payload) : null,
         });
         return await response.json();
     } catch (error) {

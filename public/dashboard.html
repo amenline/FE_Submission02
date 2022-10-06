@@ -38,15 +38,24 @@
                 </section>
                 <section class="graph-section">
                     <div class="graph-section-head heading">
-                        <h2>Revenue (last 7 days)</h2>
-                        <!-- <h2>Revenue (Last 12 months)</h2> -->
+                        <h2 class="chart-head">Revenue (last 7 days)</h2>
+                        <!-- <h2 class="hide">Revenue (Last 12 months)</h2> -->
                         <label class="switch">
-                            <input type="checkbox" />
+                            <input type="checkbox" class="toggle" />
                             <span class="slider round"></span>
                         </label>
                     </div>
                     <div class="chart">
-                        <canvas id="myChart" width="850" height="400"></canvas>
+                        <div class="days-chart">
+                            <canvas id="daysChart" width="100%"></canvas>
+                        </div>
+                        <div class="hide months-chart">
+                            <canvas
+                                id="monthsChart"
+                                width="100%"
+                                class="hide"
+                            ></canvas>
+                        </div>
                     </div>
                 </section>
                 <section>

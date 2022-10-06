@@ -1,54 +1,91 @@
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+let sales_over_time_week;
+let sales_over_time_year;
 
-const data = {
-    labels: labels,
-    datasets: [
-        {
-            label: 'Revenue',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)',
-            ],
-            borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)',
-            ],
-            borderWidth: 1,
-        },
-    ],
-};
+let days = [];
+let months = [];
+let days_data = [];
+let months_data = [];
 
-const config = {
-    type: 'bar',
-    data: data,
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true,
+fetchData(dashboard_data_url, getCookie('access_token')).then(response => {
+    const bestsellers = response.dashboard.bestsellers;
+    sales_over_time_week = response.dashboard.sales_over_time_week;
+    sales_over_time_year = response.dashboard.sales_over_time_year;
+
+    days = Object.keys(sales_over_time_week);
+    months = Object.keys(sales_over_time_year);
+
+    days.map(day => {
+        days_data.push(sales_over_time_week[day].orders)
+    });
+
+    months.map(month => {
+        months_data.push(sales_over_time_year[month].orders)
+    });
+
+    createChart(days_data, days);
+    createChart(months_data, months, 'monthsChart');
+
+}).catch(error => console.log('Error fetching dashboard data', error));
+
+function createChart(dataset, labels, id = 'daysChart') {
+    const data = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Sales',
+                data: dataset,
+                backgroundColor: [
+                    'rgb(151, 151, 151, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(151, 151, 151)'
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: false,
+                    text: '',
+                },
             },
         },
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: false,
-                text: '',
-            },
-        },
-    },
-};
+    };
 
-const myChart = new Chart(document.getElementById('myChart'), config);
+    const myChart = new Chart(document.getElementById(id), config);
+}
+
+const toggle = document.querySelector('.toggle');
+toggle.addEventListener("change", switchChart)
+
+function switchChart() {
+    const chart_heading = document.querySelector('.chart-head');
+    const days_chart = document.querySelector('.days-chart');
+    const months_chart = document.querySelector('.months-chart');
+
+    if (toggle.checked) {
+        chart_heading.innerHTML = 'Revenue (Last 12 months)';
+        days_chart.classList.add('hide')
+        months_chart.classList.remove('hide')
+
+    } else {
+        chart_heading.innerHTML = 'Revenue (last 7 days)';
+        months_chart.classList.add('hide')
+        days_chart.classList.remove('hide')
+    }
+}
