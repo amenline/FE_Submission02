@@ -34,17 +34,19 @@ function getCookie(cookie_name) {
 }
 
 async function refreshToken(refresh_token) {
-    fetchData(refresh_token_url, refresh_token, 'POST').then((data) =>
-        setCookie(
-            'access_token',
-            data.access_token,
-            15,
-            'mins'
+    fetchData(refresh_token_url, refresh_token, 'POST')
+        .then((data) =>
+            setCookie('access_token', data.access_token, 15, 'mins')
         )
-    ).catch(error => console.log('Error while trying to refresh token', error));
+        .catch((error) =>
+            console.log('Error while trying to refresh token', error)
+        );
 }
 
 async function fetchData(url, token, method = 'GET', payload = null) {
+    if (getCookie('access_token') === '') {
+        refreshToken(getCookie('refresh_token'));
+    }
     try {
         let response = await fetch(url, {
             method: method,
@@ -58,4 +60,8 @@ async function fetchData(url, token, method = 'GET', payload = null) {
     } catch (error) {
         console.log('Error while fetching data', error);
     }
+}
+
+function capitializeFirstLetter(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
 }
