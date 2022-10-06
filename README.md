@@ -1,9 +1,7 @@
 # FE_Submission02
-
 This app is deployed to [freddys-shop.netlify.app](https://freddys-shop.netlify.app)
 
 ## Structure
-
 Below is a visual representation of the directory tree:
 ```bash
 .
