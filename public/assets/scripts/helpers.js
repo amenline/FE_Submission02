@@ -44,9 +44,9 @@ async function refreshToken(refresh_token) {
 }
 
 async function fetchData(url, token, method = 'GET', payload = null) {
-    if (getCookie('access_token') === '') {
-        refreshToken(getCookie('refresh_token'));
-    }
+    // if (getCookie('access_token') === '') {
+    //     refreshToken(getCookie('refresh_token'));
+    // }
     try {
         let response = await fetch(url, {
             method: method,
