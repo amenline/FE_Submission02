@@ -8,7 +8,7 @@ document.querySelector('body').onload = function () {
             refreshToken(refresh_token);
         }
 
-        window.location.replace('../public/dashboard.html');
+        window.location.replace('../dashboard.html');
     }
 };
 
@@ -25,7 +25,7 @@ function login(_event) {
 
     if (username !== '' && password !== '')
         fetchData(login_url, null, (method = 'POST'), payload).then((data) => {
-            console.log(data.msg);
+            // console.log(data.msg);
             if (data.msg == 'Bad credentials') {
                 const notfication = document.querySelector('.notification');
                 notfication.classList.remove('hide');
@@ -35,7 +35,7 @@ function login(_event) {
             } else if (data.access_token) {
                 setCookie('access_token', data.access_token, 15, 'mins');
                 setCookie('refresh_token', data.refresh_token);
-                window.location.replace('../public/dashboard.html');
+                window.location.replace('../dashboard.html');
             }
         });
 }
