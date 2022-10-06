@@ -5,18 +5,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
-        <script src="assets/scripts/commonScripts.js"></script>
         <link rel="stylesheet" href="assets/styles/baseStyles.css" />
         <link rel="stylesheet" href="assets/styles/login.css" />
         <title>Freddys - Login</title>
     </head>
     <body>
+        <div class="notification hide">Invalid Credentials</div>
         <main>
             <div class="heading">
                 <h1>Freddy's Artisanal Halloween Candy Shop</h1>
                 <img src="assets/images/logo.svg" alt="" srcset="" />
             </div>
-            <form action="#">
+            <form action="POST">
                 <input
                     type="text"
                     name="username"
@@ -32,5 +32,7 @@
                 <button type="submit">Login</button>
             </form>
         </main>
+        <script src="assets/scripts/helpers.js"></script>
+        <script src="assets/scripts/auth.js"></script>
     </body>
 </html>
