@@ -1,11 +1,19 @@
-let sales_over_time_week;
-let sales_over_time_year;
+/**
+ * This script handles all the functionalities within the dashboard
+ * It is used only within the dashboard page
+ */
+
+// predefine values to prevent code from
+// breaking when no data is fetched
+let sales_over_time_week = [];
+let sales_over_time_year = [];
 
 let days = [];
 let months = [];
 let days_data = [];
 let months_data = [];
 
+// fetch and use the dashboard related data
 fetchData(dashboard_data_url, getCookie('access_token'))
     .then((response) => {
         const bestsellers = response.dashboard.bestsellers;
@@ -16,11 +24,11 @@ fetchData(dashboard_data_url, getCookie('access_token'))
         months = Object.keys(sales_over_time_year);
 
         days.map((day) => {
-            days_data.push(sales_over_time_week[day].orders);
+            days_data.push(sales_over_time_week[day].total);
         });
 
+        // rename the 1st and 2nd days
         for (let i = 0; i < days.length; i++) {
-            console.log(days[i]);
             if (i === 0) {
                 days[i] = 'today';
             } else if (i === 1) {
@@ -30,11 +38,11 @@ fetchData(dashboard_data_url, getCookie('access_token'))
             }
         }
 
+        // rename the 1st and 2nd months
         months.map((month) => {
-            months_data.push(sales_over_time_year[month].orders);
+            months_data.push(sales_over_time_year[month].total);
         });
         for (let j = 0; j < months.length; j++) {
-            console.log(months[j]);
             if (j === 0) {
                 months[j] = 'this month';
             } else if (j === 1) {
@@ -46,6 +54,23 @@ fetchData(dashboard_data_url, getCookie('access_token'))
 
         createChart(days_data, days);
         createChart(months_data, months, 'monthsChart');
+
+        // populate the table with data
+        const tbody = document.querySelector('tbody');
+        tbody.innerHTML = '';
+        for (let rows of bestsellers) {
+            let tr = document.createElement('TR');
+
+            const name = appendToTable(tr, rows.product.name);
+            const price = appendToTable(tr, `$${rows.revenue / rows.units}`);
+            const units = appendToTable(tr, rows.units);
+            const revenue = appendToTable(tr, `$${rows.revenue}`);
+
+            tbody.appendChild(name);
+            tbody.appendChild(price);
+            tbody.appendChild(units);
+            tbody.appendChild(revenue);
+        }
     })
     .catch((error) => console.log('Error fetching dashboard data', error));
 

@@ -1,3 +1,8 @@
+/**
+ * This script handles the authentication
+ * It is used only on the login page
+ */
+
 document.querySelector('form').addEventListener('submit', login);
 
 document.querySelector('body').onload = function () {

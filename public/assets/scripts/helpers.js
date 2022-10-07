@@ -1,4 +1,9 @@
-// console.log(document.querySelector('body'));
+/**
+ * This script contains helper functions that are used accoss the app.
+ * It is used in login, dashboard and orders page
+ */
+
+// urls to fetch data from
 const login_url = 'https://freddy.codesubmit.io/login';
 const dashboard_data_url = 'https://freddy.codesubmit.io/dashboard';
 const refresh_token_url = 'https://freddy.codesubmit.io/refresh';
@@ -44,9 +49,6 @@ async function refreshToken(refresh_token) {
 }
 
 async function fetchData(url, token, method = 'GET', payload = null) {
-    // if (getCookie('access_token') === '') {
-    //     refreshToken(getCookie('refresh_token'));
-    // }
     try {
         let response = await fetch(url, {
             method: method,
@@ -64,4 +66,11 @@ async function fetchData(url, token, method = 'GET', payload = null) {
 
 function capitializeFirstLetter(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+function appendToTable(table_row, content) {
+    const td = document.createElement('TD');
+    td.appendChild(document.createTextNode(content));
+    table_row.appendChild(td);
+    return table_row;
 }

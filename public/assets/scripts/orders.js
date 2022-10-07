@@ -48,13 +48,6 @@ function setTableData(search_term, page = 1) {
 
 setTableData(search_term);
 
-function appendToTable(table_row, content) {
-    const td = document.createElement('TD');
-    td.appendChild(document.createTextNode(content));
-    table_row.appendChild(td);
-    return table_row;
-}
-
 function handlePageChange(direction) {
     let el_current_page = document.querySelector('.current-page');
     let current_page = parseInt(el_current_page.innerHTML);
